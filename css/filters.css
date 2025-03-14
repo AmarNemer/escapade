@@ -1,0 +1,17 @@
+/* Styles pour les boutons de filtre */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #333;
+  color: white;
+}

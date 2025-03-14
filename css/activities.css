@@ -1,0 +1,35 @@
+/* Styles pour la section des activités */
+.activities-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Media Queries pour rendre la classe .activities-container responsive */
+@media (max-width: 1200px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}

@@ -1,0 +1,40 @@
+/* Styles pour les menus déroulants */
+.menu-deroulant.compte {
+  background-color: #ff5722;
+  color: white;
+  margin: 0;
+  padding: 14px;
+  border-radius: 5px 15px 15px 5px;
+  text-decoration: none;
+}
+
+.menu-deroulant span {
+  margin: 20px;
+  padding: 20px;
+}
+
+.menu-deroulant {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-deroulant div {
+  display: none;
+  position: absolute;
+  background-color: #005b88;
+  min-width: 160px;
+  z-index: 1;
+  left: 0;
+  top: 58px;
+}
+
+.menu-deroulant div a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu-deroulant:hover div {
+  display: block;
+}

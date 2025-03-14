@@ -1,0 +1,79 @@
+/* Styles pour les modales */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+  z-index: 100;
+  /* background-color: white; */
+}
+
+/* Media Queries pour les modales */
+@media (max-width: 1200px) {
+  .modal-content {
+    width: 60%;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal-content {
+    width: 70%;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .modal-content {
+    width: 90%;
+    padding: 10px;
+  }
+}
+
+#email,
+#mdp {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+/* Button close */
+.close {
+  color: #fdfdfd;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modalDetails{
+  background-color: burlywood;
+  padding: 30px;
+  border-radius: 15px;
+}

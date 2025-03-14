@@ -1,0 +1,129 @@
+/* Styles pour les modales */
+.close {
+  color: #fdfdfd;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Styles pour les formulaires dans les modales */
+.formu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.formu label,
+.formu input,
+.formu .btn {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.formu a {
+  margin: 0;
+  text-align: center;
+}
+
+#mdpo {
+  border-bottom: 1px solid #0119147a;
+  padding-bottom: 20px;
+  color: #1e679c;
+}
+
+#inscrire {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 0px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 10px 50px;
+}
+
+.formu .btn {
+  background-color: #1e679c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.formu .btn:hover {
+  background-color: #007a66;
+}
+
+/* Media Queries pour les formulaires dans les modales */
+@media (max-width: 992px) {
+  .formu {
+    padding: 8px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 14px;
+  }
+
+  .formu .btn {
+    padding: 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formu {
+    padding: 5px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 3px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 12px;
+  }
+
+  .formu .btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .formu {
+    padding: 2px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 2px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 10px;
+  }
+
+  .formu .btn {
+    padding: 4px;
+    font-size: 12px;
+  }
+}

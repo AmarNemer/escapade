@@ -1,0 +1,189 @@
+/* Styles pour le footer */
+.foot {
+  background-color: #1e679c;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.411);
+  margin-top: 50px;
+}
+
+.foot ul {
+  list-style: none;
+  padding: 0;
+}
+
+.foot li {
+  margin-bottom: 10px;
+}
+
+.horaires {
+  width: 300px;
+  padding: 0;
+}
+
+.horaires li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bi-facebook,
+.bi-instagram {
+  font-size: 48px;
+}
+
+/* Styles pour les titres */
+.titre,
+.titre1 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.titre1 {
+  padding-left: 25px; /* Ajout de padding spécifique pour .titre1 */
+}
+
+/* Styles pour les mentions légales et les réseaux sociaux */
+.mentions {
+  background-color: #689cc1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mentions ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mentions li {
+  list-style-type: none;
+  margin: 0 15px;
+  font-size: 15px;
+}
+
+.mentions p {
+  margin-left: 15px;
+  font-size: 15px;
+  color: white;
+}
+
+.mentions a {
+  text-decoration: none;
+  color: white;
+}
+
+.reseaux li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+i {
+  width: 30px;
+}
+
+.reseaux i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.reseaux a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Media Queries pour le footer et les mentions légales */
+@media (max-width: 992px) {
+  .foot {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .titre,
+  .titre1 {
+    font-size: 16px;
+  }
+
+  .titre1 {
+    padding-left: 15px;
+  }
+
+  .mentions {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mentions ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mentions li {
+    margin: 10px 0;
+  }
+
+  .mentions p {
+    font-size: 14px;
+    margin-left: 0;
+  }
+
+  .reseaux i {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .titre,
+  .titre1 {
+    font-size: 14px;
+  }
+
+  .titre1 {
+    padding-left: 10px;
+  }
+
+  .mentions li {
+    margin: 8px 0;
+  }
+
+  .mentions p {
+    font-size: 12px;
+  }
+
+  .reseaux i {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .titre,
+  .titre1 {
+    font-size: 12px;
+  }
+
+  .titre1 {
+    padding-left: 5px;
+  }
+
+  .mentions li {
+    margin: 6px 0;
+  }
+
+  .mentions p {
+    font-size: 10px;
+  }
+
+  .reseaux i {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,156 @@
+/* Styles pour les formulaires */
+.formu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 400px;
+  margin: 50px auto 50px auto;
+  padding: 20px;
+  /* border-radius: 5px; */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.349);
+  background-color: burlywood;
+}
+
+.inscri {
+  background-image: url("images/background escapade.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-top: 3rem;
+}
+/* Style pour les formulaires*/
+.formu {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.formu label,
+.formu input,
+.formu .btn {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.formu a {
+  margin: 0;
+  text-align: center;
+}
+
+/* Media Queries pour rendre la classe .formu responsive */
+@media (max-width: 992px) {
+  .formu {
+    padding: 8px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formu {
+    padding: 5px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 3px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .formu {
+    padding: 2px;
+  }
+
+  .formu label,
+  .formu input,
+  .formu .btn {
+    margin: 2px 0;
+    width: 100%;
+  }
+
+  .formu a {
+    font-size: 10px;
+  }
+}
+
+#mdpo {
+  border-bottom: 1px solid #0119147a;
+  padding-bottom: 20px;
+  color: #1e679c;
+}
+
+#inscrire {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 0px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 10px 50px;
+}
+
+.formu .btn {
+  background-color: #1e679c;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.formu .btn:hover {
+  background-color: #e64a19;
+}
+
+/* Media Queries pour rendre la classe .btn responsive */
+@media (max-width: 992px) {
+  .formu .btn {
+    padding: 8px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .formu .btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .formu .btn {
+    padding: 4px;
+    font-size: 12px;
+  }
+}
+
+input{
+  padding-top: 10px;
+  /* border-radius: 10px; */
+}
+
+#genre{
+  padding: 10px 0 10px 0;
+}

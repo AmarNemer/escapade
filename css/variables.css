@@ -1,0 +1,20 @@
+/* Variables CSS globales */
+:root {
+  --primary-color: #ff5722;
+  --secondary-color: #ffc107;
+  --accent-color: #9c27b0;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background: var(--background-color);
+}

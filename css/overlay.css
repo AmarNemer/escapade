@@ -1,0 +1,62 @@
+/* Styles pour les overlays et cartes interactives */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay h3 {
+  margin: 0;
+  color: #007bff;
+}
+
+.overlay p {
+  font-size: 14px;
+  color: #333;
+}
+
+.overlay img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
+  color: #9c27b0;
+}
+
+.iconCoeur {
+  color: red;
+  width: 30px;
+  height: 30px;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.stars i {
+  color: gold;
+  font-size: 10px;
+}
+
+.card2 p,
+.card2 h4 {
+  display: none;
+}
+
+.card2:hover p,
+.card2:hover h4 {
+  display: block;
+  font-size: 12px;
+  margin: 5px 0 0;
+}

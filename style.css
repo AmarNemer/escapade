@@ -1,0 +1,694 @@
+@import url('css/activities-grid.css');
+@import url('css/activities.css');
+@import url('css/buttons.css');
+@import url('css/cards.css');
+@import url('css/dropdown-menu.css');
+@import url('css/filters.css');
+@import url('css/footer.css');
+@import url('css/forms.css');
+@import url('css/header.css');
+@import url('css/hero.css');
+@import url('css/modal-forms.css'); 
+@import url('css/modal.css');
+@import url('css/overlay.css');
+@import url('css/tables.css');
+@import url('css/typography.css');
+@import url('css/variables.css');
+
+body {
+    overflow-x: hidden; /* Empêche le débordement horizontal */
+}
+
+.container { /* Si vous avez un conteneur principal */
+    max-width: 1200px; /* Ajustez cette valeur selon vos besoins */
+    margin: 0 auto; /* Centre le contenu */
+    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés */
+}
+
+/* Styles globaux */
+@media screen and (min-width: 1600px) {
+  body, header, main, footer {
+    max-width: 1400px; /* Ajustez la largeur pour les grands écrans */
+  }
+}
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Styles pour les cartes */
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Media Queries pour rendre la classe .container responsive */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+h2 {
+  font-size: 60px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Media Queries pour rendre le titre responsive */
+@media (max-width: 1200px) {
+  h2 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
+p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.container1 {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Media Queries pour rendre la classe .container1 responsive */
+@media (max-width: 1200px) {
+  .container1 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 992px) {
+  .container1 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container1 {
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container1 {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+.container2 {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+/* Media Queries pour rendre la classe .container2 responsive */
+@media (max-width: 1200px) {
+  .container2 {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 992px) {
+  .container2 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container2 {
+    gap: 15px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container2 {
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
+
+
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+:root {
+  --primary-color: #ff5722;
+  --secondary-color: #ffc107;
+  --accent-color: #9c27b0;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background: var(--background-color);
+}
+
+header {
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* position: sticky; */
+  top: 0;
+  /* z-index: 100; */
+}
+
+/* nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.main-menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.main-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.main-menu a:hover,
+.main-menu a.active {
+  background: var(--primary-color);
+  color: white;
+}
+.activities-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Media Queries pour rendre la classe .activities-container responsive */
+@media (max-width: 1200px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}
+
+.contact-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-top: 3rem;
+}
+
+
+
+/* Styles de base */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.activities-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Media Queries pour rendre la classe .activities-container responsive */
+@media (max-width: 1200px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .activities-container {
+    max-width: 100%;
+    padding: 5px;
+  }
+}
+
+
+
+/* Grille des activités */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.activity-title {
+  font-size: 1.2em;
+  color: #222;
+}
+
+.activity-details {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #333;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.activity-btn:hover {
+  background: #555;
+}
+
+/* .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a, .dropdown-button {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li a:hover, .dropdown:hover .dropdown-button {
+    background-color: #111;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;liu
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+} */
+
+
+/* On positionne (en relatif) le conteneur du menu déroulant 
+  pour pouvoir positionner le contenu de la liste juste 
+  en dessous du span */
+
+
+/* Contenu déroulant (caché par défaut) 
+   et positionné par rapport au conteneur */
+
+
+/* Les liens du menu déroulant */
+div div a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none; /* on enlève le surlignement */
+  display: block; /* on les affiche */
+}
+
+
+/* Style général du tableau */
+table {
+  overflow-x: auto;
+  width: 90%;
+  border-collapse: collapse;
+  margin: auto;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* En-tête du tableau */
+table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Cellules de l'en-tête du tableau */
+table thead th {
+  padding: 12px 15px;
+}
+
+/* Lignes impaires du corps du tableau */
+table tbody tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
+
+/* Lignes paires du corps du tableau */
+table tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* Cellules du corps du tableau */
+table tbody td {
+  padding: 12px 15px;
+}
+
+/* Liens dans les cellules du tableau */
+table tbody td a {
+  color: #009879;
+  text-decoration: none;
+}
+
+table tbody td a:hover {
+  text-decoration: underline;
+}
+
+/* Bordures des cellules */
+table,
+th,
+td {
+  border: 1px solid #dddddd;
+}
+
+/* Style du conteneur du tableau */
+.table-container {
+  overflow-x: auto;
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+/* Styles pour les tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+thead {
+  background-color: #009879;
+  color: white;
+}
+
+thead th,
+tbody td {
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* Media Queries pour rendre les tables responsives */
+@media (max-width: 768px) {
+  table {
+    font-size: 16px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  table {
+    font-size: 14px;
+  }
+
+  thead th,
+  tbody td {
+    padding: 8px 10px;
+  }
+}
+
+
+.motPresidente {
+  display: flex;
+  margin: auto;
+  margin-top: 50px;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 600;
+  width: 750px;
+  gap: 20px;
+  border: none;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.349);
+  border-radius: 15px;
+  background-color: burlywood;
+}
+
+.textePresidente {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  max-width: 50%;
+  font-size: 20px;
+  font-weight: 300;
+  width: 500px;
+}
+
+.textePresidente p {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.imagePresidente {
+  width: auto;
+  max-width: 50%;
+  border-radius: 15px 0 0 15px;
+}
+
+/* Media Queries pour rendre les sections responsives */
+@media (max-width: 768px) {
+  .motPresidente {
+    flex-direction: column;
+    width: 90%;
+    font-size: 20px;
+  }
+
+  .textePresidente {
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .textePresidente p {
+    font-size: 14px;
+  }
+
+  .imagePresidente {
+    max-width: 100%;
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+.presentationBene {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  width: 100%;
+}
+
+.groupePersonne {
+  gap: 20px;
+  padding: 20px;
+  width: 600px;
+}
+
+.benevoles {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 300;
+  width: 100%;
+}
+
+.presentationBene p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+/* Media Queries pour rendre les sections responsives */
+@media (max-width: 768px) {
+  .presentationBene {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .groupePersonne {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .benevoles {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .presentationBene p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
