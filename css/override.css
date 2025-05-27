@@ -1,0 +1,13 @@
+html, body {
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+}
+
+div[class*="container"] {
+    width: 98% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 1% !important;
+}

@@ -189,5 +189,4 @@ $showUnsubscribeButton = true; // Indique que le bouton de désinscription doit 
 </div>
 <?php include 'footer.php'; // Assurez-vous que le chemin est correct ?>
 
-</body>
-</html>
+

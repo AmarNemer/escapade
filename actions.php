@@ -254,3 +254,56 @@ button {
 </body>
 </html>
 <?php include 'footer.php'; ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bonne Fête !</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f8f0e3;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .door {
+            width: 200px;
+            height: 300px;
+            background: url('door.jpg') no-repeat center center;
+            background-size: cover;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: transform 1s;
+        }
+        .door.open {
+            transform: rotateY(120deg);
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cliquez sur la porte pour découvrir votre message</h1>
+        <div class="door" onclick="openDoor()"></div>
+        <p id="message"></p>
+    </div>
+    <script>
+        function openDoor() {
+            document.querySelector('.door').classList.add('open');
+            setTimeout(() => {
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('message').innerText = "Bonne fête ! " + (new URLSearchParams(window.location.search)).get("msg");
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

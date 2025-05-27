@@ -1,4 +1,5 @@
 <?php
+session_start(); // Assurez-vous que la session est bien démarrée
 include 'config.php'; // Assurez-vous que le chemin vers le fichier de configuration est correct
 
 if (isset($_GET['id'])) {
@@ -17,7 +18,13 @@ if (isset($_GET['id'])) {
         echo "<p><strong>Jour :</strong> " . htmlspecialchars($event['jour'] ?? 'Non spécifié') . "</p>";
         echo "<p><strong>Heure :</strong> " . htmlspecialchars($event['heure'] ?? 'Non spécifié') . "</p>";
         echo "<p><strong>Prix :</strong> " . htmlspecialchars($event['prix'] ?? 'Gratuit') . "</p>";
-        echo '<a href="#" class="inscription-btn" data-id="' . htmlspecialchars($event['id'] ?? '', ENT_QUOTES, 'UTF-8') . '" onclick="updateBtnInscription(event, this);">S\'inscrire</a>';
+
+        // Vérification de la connexion avant d'afficher le bouton "S'inscrire"
+        if (isset($_SESSION['id'])) {
+            echo '<span id="affbtn"><a href="#" class="inscription-btn" data-id="' . htmlspecialchars($event['id'] ?? '', ENT_QUOTES, 'UTF-8') . '" onclick="updateBtnInscription(event, this);">S\'inscrire</a></span>';
+        } else {
+            echo '<p><a href="espaceconnexion.php">Connectez-vous</a> pour vous inscrire.</p>';
+        }
         
     } else {
         echo "<p>Aucune information trouvée.</p>"; // Message si l'événement n'existe pas

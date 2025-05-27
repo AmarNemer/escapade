@@ -8,6 +8,10 @@
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" required><br><br>
 
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" id="pseudo" name="pseudo"><br><br>
+
+
         <label for="email">Adresse e-mail :</label>
         <input type="email" id="email" name="email" required><br><br>
 

@@ -176,11 +176,16 @@ function updateBtnInscription(event, button) {
     body: `inscrire=true&id_activite=${idActivite}`,
   })
     .then((response) => {
-      return response.json();
+      
+      let reponse=response.json();
     })
     .then((data) => {
+      document.getElementById("affbtn").innerHTML =
+        "Vous êtes inscrit à l'activité.";
       if (data.success) {
         // J'imagine que tu renverras { success: true } en réponse
+        document.getElementById("affbtn").innerHTML =
+          "Vous êtes inscrit à l'activité.";
         document.getElementById("modalDetails").innerHTML =
           "Vous êtes inscrit à l'activité. Un email de confirmation a été envoyé.";
       } else {

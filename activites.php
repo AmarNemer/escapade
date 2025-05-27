@@ -1,69 +1,84 @@
 <?php
 session_start();
 include 'config.php'; // Assurez-vous que le chemin est correct
+require 'vendor/autoload.php'; // Charger PHPMailer au début
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 // Requête pour récupérer les événements depuis la base de données
 $sql = "SELECT * FROM activites a JOIN categories c ON a.id_categorie = c.id_categorie";
 $stmt = $mysqlClient->prepare($sql);
 $stmt->execute();
-$events = $stmt->fetchAll(PDO::FETCH_ASSOC); // Utilisation de FETCH_ASSOC pour un tableau associatif
+$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Inscription à une activité
 if (isset($_POST['id_activite']) && $_POST['inscrire'] == 'true') {
-    $id_activite = intval($_POST['id_activite']); // Assurez-vous que l'ID est un entier
+    $id_activite = intval($_POST['id_activite']);
 
     $stmt = $mysqlClient->prepare("SELECT * FROM activites WHERE id = ?");
     $stmt->execute([$id_activite]);
-    $activity = $stmt->fetch(PDO::FETCH_ASSOC); // Utilisation de FETCH_ASSOC
+    $activity = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($activity) {
-        // Inscription de l'utilisateur
+        // Insertion de l'inscription en base
         $sql = "INSERT INTO inscriptions (id_membre, id_activite, date_inscription, statut_paiement) VALUES (?, ?, ?, 'en attente')";
         $stmt = $mysqlClient->prepare($sql);
         $result = $stmt->execute([$_SESSION['id'], $id_activite, date('Y-m-d')]);
 
-        // Envoi de l'e-mail de confirmation
         if ($result) {
-            // Envoi de l'e-mail avec PHPMailer
-            require 'vendor/autoload.php'; // Charge automatiquement PHPMailer
-
+            // Envoi de l'e-mail
             $mail = new PHPMailer(true);
             try {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'centresocialescapade@gmail.com'; // Ton email
-                $mail->Password = 'iubl cxrr xkfq gnwj'; // Mot de passe de l'application
+                $mail->Username = 'centresocialescapade@gmail.com';
+                $mail->Password = 'iubl cxrr xkfq gnwj';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('centresocialescapade@gmail.com', 'Centresocial Escapade');
-                $mail->addAddress($_SESSION['email'], $_SESSION['nom']); // L'email de l'utilisateur
+                $mail->setFrom('centresocialescapade@gmail.com', 'Centre Social Escapade');
+                $mail->addAddress($_SESSION['email'], $_SESSION['nom']);
 
                 $mail->isHTML(true);
-                $mail->Subject = 'Confirmation d\'inscription à l\'activité';
-                $mail->Body = 'Bonjour ' . $_SESSION['nom'] . ',<br><br>Vous êtes bien inscrit à l\'activité : ' . $activity['titre'] . '.';
+                $mail->Subject = 'Réservation d\'activité - Escapade';
+                $mail->Body = '
+                    <p>Bonjour ' . htmlspecialchars($_SESSION['nom']) . ',</p>
+
+                    <p>Vous venez de réserver une place pour l\'activité suivante :</p>
+                    <ul>
+                        <li><strong>Activité :</strong> ' . htmlspecialchars($activity['titre']) . '</li>
+                    </ul>
+
+                    <p><strong>⚠️ Important :</strong> votre inscription est <strong>réservée pendant 48h</strong>. Merci de vous rendre au centre pour régler le montant de l\'activité. Sans paiement dans ce délai, votre réservation sera annulée.</p>
+
+                    <p>À très bientôt,<br>
+                    L\'équipe du Centre Social Escapade</p>
+                ';
+                file_put_contents('debug_mailer.txt', "Tentative mail à: ".$_SESSION['email']."\n", FILE_APPEND);
 
                 $mail->send();
-
-                // Réponse en JSON
                 echo json_encode(['success' => true, 'message' => 'Inscription réussie et e-mail envoyé.']);
             } catch (Exception $e) {
-                echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'envoi de l\'e-mail: ' . $mail->ErrorInfo]);
+                file_put_contents('debug_mailer.txt', $mail->ErrorInfo . "\n", FILE_APPEND);
+                echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'envoi de l\'e-mail : ' . $mail->ErrorInfo]);
             }
+            
         } else {
             echo json_encode(['success' => false, 'message' => 'Erreur lors de l\'inscription.']);
         }
         exit;
     } else {
         echo json_encode(['success' => false, 'message' => 'Activité introuvable.']);
+        exit;
     }
 }
 
 include 'header.php';
 ?>
 
-<main class="activities-container">
+<div class="activities-container">
     <section class="hero-section">
         <h1>Nos Activités</h1>
         <p>Découvrez toutes les activités proposées par le Centre Social Escapade</p>

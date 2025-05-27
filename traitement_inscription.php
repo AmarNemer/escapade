@@ -1,82 +1,62 @@
 <?php
-// Inclure le fichier de configuration pour la connexion à la base de données
 include("config.php");
 
-// Vérifier si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
+// Affichage des erreurs pour le debug
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Vérification des paramètres attendus
+    $required = ['nom','prenom','email','telephone','date_naissance','mdp','genre'];
+    foreach ($required as $key) {
+        if (empty($_POST[$key])) {
+            die("Erreur : champ $key manquant !");
+        }
+    }
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
-    $pseudo = $_POST['pseudo'] ?? ''; // Ajoutez une vérification pour éviter l'erreur "Undefined array key"
-    $date_naissance = $_POST['date_naissance'];
-    $genre = $_POST['genre'];
+    $pseudo = $_POST['pseudo'] ?? null; // Optionnel !
     $email = $_POST['email'];
     $telephone = $_POST['telephone'];
-    $mot_de_passe = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // Hacher le mot de passe
+    $date_naissance = $_POST['date_naissance'];
+    $genre = $_POST['genre'];
+    $mot_de_passe = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+    $role = 'user';
 
-    // Définir le rôle par défaut comme 'user'
-    $role = 'user'; 
+    // Vérifier l'unicité de l'email
+    $check = $mysqlClient->prepare("SELECT COUNT(*) FROM membres WHERE email=?");
+    $check->execute([$email]);
+    if ($check->fetchColumn() > 0) {
+        die("Erreur : cet email est déjà utilisé.");
+    }
 
-    // Préparer la requête SQL pour insérer les données dans la table membres
-    $requete = "INSERT INTO membres (nom, prenom, pseudo, email, telephone, date_naissance, mdp, genre, role) VALUES (:nom, :prenom, :pseudo, :email, :telephone, :date_naissance, :mdp, :genre, :role)";
-    $reqsql = $mysqlClient->prepare($requete);
+    $sql = "INSERT INTO membres (nom, prenom, pseudo, email, telephone, date_naissance, mdp, genre, role)
+            VALUES (:nom, :prenom, :pseudo, :email, :telephone, :date_naissance, :mdp, :genre, :role)";
+    $stmt = $mysqlClient->prepare($sql);
 
-    // Lier les paramètres aux valeurs récupérées du formulaire
-    $reqsql->bindParam(':nom', $nom, PDO::PARAM_STR);
-    $reqsql->bindParam(':prenom', $prenom, PDO::PARAM_STR);
-    $reqsql->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
-    $reqsql->bindParam(':email', $email, PDO::PARAM_STR);
-    $reqsql->bindParam(':telephone', $telephone, PDO::PARAM_STR);
-    $reqsql->bindParam(':date_naissance', $date_naissance, PDO::PARAM_STR);
-    $reqsql->bindParam(':mdp', $mot_de_passe, PDO::PARAM_STR);
-    $reqsql->bindParam(':genre', $genre, PDO::PARAM_STR);
-    $reqsql->bindParam(':role', $role, PDO::PARAM_STR); // Lier la valeur du rôle
+    // Bind (null pour pseudo si non fourni !)
+    $stmt->bindValue(':nom', $nom);
+    $stmt->bindValue(':prenom', $prenom);
+    $stmt->bindValue(':pseudo', $pseudo); // peut être null!
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':telephone', $telephone);
+    $stmt->bindValue(':date_naissance', $date_naissance);
+    $stmt->bindValue(':mdp', $mot_de_passe);
+    $stmt->bindValue(':genre', $genre);
+    $stmt->bindValue(':role', $role);
 
-    // Exécuter la requête SQL
-    if ($reqsql->execute()) {
-        echo "Inscription réussie !";
-        header("Location: index.php");
+    if ($stmt->execute()) {
+        // Redirige seulement, ne fais pas de echo avant
+        header("Location: index.php?inscription=ok");
         exit();
     } else {
-        echo "Erreur lors de l'inscription.";
+        // Affichage des erreurs de PDO si insert rate
+        $err = $stmt->errorInfo();
+        die("Erreur lors de l'inscription : ".$err[2]);
     }
+} else {
+    // accès direct interdit
+    header("Location: inscription.php");
+    exit();
 }
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Inscription</title>
-</head>
-<body>
-    <h1>Formulaire d'inscription</h1>
-    <form method="post" action="index.php">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br>
-
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required><br>
-
-        <label for="pseudo">Pseudo :</label>
-        <input type="text" id="pseudo" name="pseudo" required><br>
-
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="telephone">Téléphone :</label>
-        <input type="text" id="telephone" name="telephone" required><br>
-
-        <label for="date_naissance">Date de Naissance :</label>
-        <input type="date" id="date_naissance" name="date_naissance" required><br>
-
-        <label for="genre">Genre :</label>
-        <input type="text" id="genre" name="genre" required><br>
-
-        <label for="mdp">Mot de Passe :</label>
-        <input type="password" id="mdp" name="mdp" required><br>
-
-        <button type="submit" name="submit">Inscription</button>
-    </form>
-</body>
-</html>

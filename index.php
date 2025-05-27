@@ -9,7 +9,7 @@
             </div>
         </section>
         <section>
-            <div>
+            <div class="presentation">
                 <h2>L’ASSOCIATION</h2>
                 <div class="container">
                     <div class="card">
@@ -25,6 +25,7 @@
                         <p>Nous imaginons une société plus solidaire où chacun trouve sa place. Notre centre social est un lieu d’accueil ouvert à tous, favorisant la mixité sociale et les rencontres intergénérationnelles.</p>
                     </div>
                 </div>
+            <div>
         </section>
         <section>
             <h2>NOS VALEURS</h2>

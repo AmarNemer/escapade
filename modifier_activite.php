@@ -9,7 +9,6 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'admin') {
 }
 
 include("config.php"); // Connexion à la base de données
-include("header.php");
 
 // Activer le rapport d'erreurs pour débogage
 ini_set('display_errors', 1);
@@ -35,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jour = trim($_POST['jour']);
     $heure = trim($_POST['heure']);
     $prix = trim($_POST['prix']);
-
+    
     // Vérifier si un fichier a été uploadé
     if (!empty($_FILES['image']['name'])) {
         $image = $id . '-' . basename($_FILES['image']['name']);
@@ -51,14 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-
+    
     // Mise à jour avec ou sans nouvelle image
     if (!empty($_FILES['image']['name'])) {
         $requete = "UPDATE activites SET titre = :titre, id_categorie = :id_categorie, description = :description, image = :image, jour = :jour, heure = :heure, prix = :prix WHERE id = :id";
     } else {
         $requete = "UPDATE activites SET titre = :titre, id_categorie = :id_categorie, description = :description, jour = :jour, heure = :heure, prix = :prix WHERE id = :id";
     }
-
+    
     $reqsql = $mysqlClient->prepare($requete);
     $reqsql->bindParam(':id', $id, PDO::PARAM_INT);
     $reqsql->bindParam(':titre', $titre, PDO::PARAM_STR);
@@ -67,27 +66,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reqsql->bindParam(':jour', $jour, PDO::PARAM_STR);
     $reqsql->bindParam(':heure', $heure, PDO::PARAM_STR);
     $reqsql->bindParam(':prix', $prix, PDO::PARAM_STR);
-
+    
     if (!empty($_FILES['image']['name'])) {
         $reqsql->bindParam(':image', $image, PDO::PARAM_STR);
     }
-
+    
     $reqsql->execute();
-
+    
     header("Location: admin_dashboard.php?success=1");
     exit();
 }
 
+include("header.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier une activité</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+
     <?php if ($activite): ?>
         <h1>Modifier l'activité : <?= htmlspecialchars($activite['titre'] ?? '') ?></h1>
         <form class="formu" action="modifier_activite.php?id=<?= $activite['id'] ?>" method="post" enctype="multipart/form-data"> 
@@ -127,6 +120,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <a href="admin_dashboard.php">Retour au tableau de bord</a>
     <?php endif; ?>
     <?php include 'footer.php'; ?>
-</body>
-</html>
-<?php include 'footer.php'; ?>²
